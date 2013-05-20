@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: First topic
+  description: The description of the First topic.
+  category: one
+  user: admin
+
+two:
+  title: Another topic
+  description: This is another topic.
+  category: one
+  user: one
+
+three:
+  title: New topic
+  description: This is a new topic.
+  category: two
+  user: one

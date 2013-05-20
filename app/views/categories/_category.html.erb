@@ -1,0 +1,13 @@
+<div class="container">
+  <p>
+    <%= link_to category.name, category_url(category), :class => "topic_link" %> (<%= pluralize(category.topics.size, "topic") %>)<br />
+    Created by <%= link_to category.user.name, user_url(category.user), :class => "user_link" %> at <%= l category.created_at, :format => :long %>.
+  </p>
+  <% if current_user %>
+    <% if Subscription.find_by_user_id_and_category_id current_user.id, category.id %>
+      <%= link_to "Unsubscribe", unsubscribe_category_url(category) %>
+    <% else %>
+      <%= link_to "Subscribe", subscribe_category_url(category) %>
+    <% end %>
+  <% end %>
+</div>

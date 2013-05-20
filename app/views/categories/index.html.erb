@@ -1,0 +1,11 @@
+<p><%= link_to "Main", "/" %> &gt; Categories</p>
+
+<% if current_user %>
+  <%= link_to "Create new category", :action => :new %>
+<% end %>
+
+<% if @categories && @categories.any? %>
+  <%= render :partial => "/categories/category", :collection => @categories %>
+<% else %>
+  <p>There are no categories yet.</p>
+<% end %>

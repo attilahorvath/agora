@@ -1,0 +1,39 @@
+<p>
+  <% if @category %>
+    <%= link_to "Main", "/" %> &gt; <%= @category.name %>
+  <% elsif current_user %>
+    <%= link_to "Main", "/" %> &gt; Subscriptions
+  <% else %>
+    <%= link_to "Main", "/" %> &gt; Topics
+  <% end %>
+</p>
+
+<% if current_user && @category %>
+  <%= link_to "Create new topic", new_topic_url(@category.id) %><br />
+  <% if Subscription.find_by_user_id_and_category_id current_user.id, @category.id %>
+    <%= link_to "Unsubscribe", unsubscribe_category_url(@category) %>
+  <% else %>
+    <%= link_to "Subscribe", subscribe_category_url(@category) %>
+  <% end %>
+<% end %>
+
+<% if @topics && @topics.any? %>
+  <ul id="filters">
+    <% [:popular, :controversial, :new].each do |filter| %>
+      <li>
+        <a href="?filter=<%= filter %>">
+          <div class="filter" <%= 'id="current_filter"'.html_safe if @filter == filter %>>
+            <%= filter.capitalize %>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div id="topics">
+    <%= render :partial => "/topics/topic", :collection => @topics %>
+  </div>
+<% elsif current_user && !@category %>
+  <p>You don't have any subscriptions yet. See the <%= link_to "list of categories", :categories %> and subscribe to some of them.</p>
+<% else %>
+  <p>There are no topics yet.</p>
+<% end %>

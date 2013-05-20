@@ -1,0 +1,24 @@
+<p><%= link_to "Main", "/" %> &gt; <%= link_to @topic.category.name, category_url(@topic.category) %> &gt; <%= @topic.title %></p>
+
+<%= render :partial => "/topics/topic", :locals => { :topic => @topic } %>
+
+<h3>Comments</h3>
+
+<% if current_user %>
+  <%= form_for @comment do |f| %>
+    <p>
+      <%= f.label :text, "Add new comment" %><br />
+      <%= f.hidden_field :topic_id, :value => @topic.id %>
+      <%= f.text_area :text, :cols => 50, :rows => 5, :placeholder => "Write a comment on this topic." %>
+    </p>
+    <%= submit_tag :login, :value => "Submit" %>
+  <% end %>
+<% end %>
+
+<% if @comments && @comments.any? %>
+  <%= for_each_children(@comments, nil, '<div class="comment_container">', "</div>") do |child| %>
+    <% render :partial => "/comments/comment", :locals => { :comment => child, :include_topic => false } %>
+  <% end %>
+<% else %>
+  <p>There are no comments yet.</p>
+<% end %>

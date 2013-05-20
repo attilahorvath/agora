@@ -1,0 +1,9 @@
+<p><%= link_to "Main", "/" %> &gt; Get reset key</p>
+
+<p>Proivide the e-mail address you used for registration.</p>
+
+<%= form_tag :send_reset_key do |f| %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+  <%= submit_tag "Get reset key" %>
+<% end %>

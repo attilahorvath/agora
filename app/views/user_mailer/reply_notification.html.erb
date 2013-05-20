@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Someone replied to a comment written by you.</h1>
+    <p>
+      <%= link_to @comment.user.name, user_url(@comment.user) %> replied to your comment in the topic "<%= link_to @comment.topic.title, topic_url(@comment.topic) %>" at <%= l @comment.created_at, :format => :long %>.<br />
+      The comment: <%= @comment.text %><br />
+      <%= link_to "View in context", topic_url(@comment.topic) + "#c#{ @comment.id }" %>
+    </p>
+    <p>You can disable these notifications in your <%= link_to "user options", edit_user_url %>.</p>
+    <p><%= link_to "Agora", root_url %>, 2012.</p>
+  </body>
+</html>

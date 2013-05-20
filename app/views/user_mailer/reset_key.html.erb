@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Password reset key for your Agora account.</h1>
+    <p>Someone has requested a password reset for the Agora account <%= link_to @user.name, user_url(@user) %>.</p>
+    <p>If it was you, follow this link to reset your password: <%= link_to reset_password_url(@user.id, @user.reset_key), reset_password_url(@user.id, @user.reset_key) %>.</p>
+    <p>If you didn't request a password reset, you can safely ignore this message and continue to use your current password.</p>
+    <p><%= link_to "Agora", root_url %>, 2012.</p>
+  </body>
+</html>

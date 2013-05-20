@@ -1,0 +1,15 @@
+<p><%= link_to "Main", "/" %> &gt; Search for "<%= @query %>"</p>
+
+<h3>Categories</h3>
+<% if @categories && @categories.any? %>
+  <%= render :partial => "/categories/category", :collection => @categories %>
+<% else %>
+  <p>No category found.</p>
+<% end %>
+
+<h3>Topics</h3>
+<% if @topics && @topics.any? %>
+  <%= render :partial => "/topics/topic", :collection => @topics %>
+<% else %>
+  <p>No topic found.</p>
+<% end %>

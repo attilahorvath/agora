@@ -1,0 +1,17 @@
+<p><%= link_to "Main", "/" %> &gt; <%= @user.name %>
+
+<h3>Recent Comments</h3>
+
+<% if @comments && @comments.any? %>
+  <%= render :partial => "/comments/comment", :collection => @comments, :locals => { :include_topic => true } %>
+<% else %>
+  <p>There are no comments written by this user.</p>
+<% end %>
+
+<h3>Recent Topics</h3>
+
+<% if @topics && @topics.any? %>
+  <%= render :partial => "/topics/topic", :collection => @topics %>
+<% else %>
+  <p>There are no topics created by this user.</p>
+<% end %>

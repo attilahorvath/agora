@@ -1,0 +1,10 @@
+<% if target.errors.any? %>
+  <div id="error_list">
+    These errors prevented the operation:
+    <ul>
+      <% target.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

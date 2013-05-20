@@ -1,0 +1,154 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  font-family: sans-serif;
+}
+
+#title {
+  font-size: 32pt;
+  float: left;
+  margin-top: 10px;
+}
+
+#title a {
+  color: black;
+  text-decoration: none;
+}
+
+#right {
+  float: right;
+  text-align: right;
+  line-height: 2;
+} 
+
+#right form {
+  display: inline;
+}
+
+#search_field {
+  width: 230px;
+}
+
+#flash {
+  clear: both;
+}
+
+#flash #error {
+  background-color: red;
+  padding: 2px;
+}
+
+#flash #notice {
+  background-color: green;
+  padding: 2px;
+}
+
+.dismiss_flash {
+  float: right;
+}
+
+#error_list {
+  background-color: red;
+}
+
+#filters {
+  padding: 0px;
+}
+
+.filter {
+  float:left;
+  border:1px solid black;
+  padding:5px;
+  width:150px;
+  background-color: lightgray;
+  text-align:center;
+}
+
+#current_filter {
+  background-color: white;
+  color: black;
+}
+
+#topics {
+  clear:both;
+  padding-top: 1px;
+}
+
+.container {
+  border: 1px solid;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+.votes_container {
+  display: table;
+  float: left;
+  height: 100px;
+  width: 50px;
+}
+
+.votes {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.vote_button {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+}
+
+.data_container {
+  display: table;
+  height: 100px;
+}
+
+.data {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.comment_container .comment_container {
+  margin-left: 50px;
+}
+
+.deleted_comment {
+  color: gray;
+}
+
+.topic_link {
+  font-weight: bold;
+}
+
+.user_link {
+  font-style: italic;
+}
+
+.form_label {
+  display: block;
+  float: left;
+  width: 200px;
+}
+
+.field_with_errors {
+  background-color: red;
+}
+
+.topic_header {
+  border: 1px solid;
+  padding: 5px;
+}

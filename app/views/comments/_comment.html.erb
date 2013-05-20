@@ -1,0 +1,42 @@
+<div class="container">
+  <a id="c<%= comment.id %>"></a>
+  <% if comment.deleted %>
+    <p class="deleted_comment">Comment deleted.</p>
+  <% else %>
+    <div class="votes_container">
+      <div class="votes">
+        <%= button_to "+", vote_comment_url(comment.id, "true"), :class => "vote_button", :disabled => !current_user || comment.user_voted?(current_user) %>
+        <%= comment.votes %><br/>
+        <%= button_to "-", vote_comment_url(comment.id, "false"), :class => "vote_button", :disabled => !current_user || comment.user_voted?(current_user) %>
+      </div>
+    </div>
+    <div class="data_container">
+      <div class="data">
+        <p><%= comment.text %></p>
+        Written by <%= link_to comment.user.name, user_url(comment.user), :class => "user_link" %> at <%= l comment.created_at, :format => :long %>
+        <% if comment.created_at != comment.updated_at %>
+          updated at <%= l comment.updated_at, :format => :long %>
+        <% end %>
+        <% if include_topic %>
+          <br /><%= link_to comment.topic.title, topic_url(comment.topic), :class => "topic_link" %> in <%= link_to comment.topic.category.name, category_url(comment.topic.category) %>
+        <% end %>
+        <br />
+        <%= link_to "Permalink", "#{topic_url(comment.topic)}#c#{comment.id}" %>
+        <% if current_user %>
+          <a href="#" class="reply_link">Reply</a>
+          <% if current_user.id == comment.user.id %>
+            <a href="#" class="edit_comment_link">Edit</a>&nbsp;<%= link_to "Delete", delete_comment_url(comment), :confirm => "Are you sure?" %>
+          <% end %>
+          <%= form_for(Comment.new, :url => reply_comment_path(comment), :html => { :class => "reply_form", :hidden => true }) do |f| %>
+            <%= f.text_area :text, :cols => 50, :rows => 5, :placeholder => "Reply to this comment." %><br />
+            <%= f.submit "Submit" %>&nbsp;<%= button_tag "Cancel", :type => "button", :class => "cancel_reply" %>
+          <% end %>
+          <%= form_for comment, :html => { :class => "edit_comment_form", :hidden => true } do |f| %>
+            <%= f.text_area :text, :cols => 50, :rows => 5, :placeholder => "Edit this comment." %><br />
+            <%= f.submit "Submit" %>&nbsp;<%= button_tag "Cancel", :type => "button", :class => "cancel_edit" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

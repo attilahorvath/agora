@@ -1,0 +1,5 @@
+== Agora
+
+Agora is a basic forum engine with Reddit-style voting and threaded comments.
+
+It was written in Ruby on Rails for a web development college course.

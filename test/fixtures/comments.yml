@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  text: First comment
+  topic: one
+  user: admin
+
+two:
+  text: A comment
+  topic: one
+  user: one
+
+reply:
+  text: A reply
+  parent: two
+  topic: one
+  user: one

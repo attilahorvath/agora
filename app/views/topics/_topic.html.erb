@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="votes_container">
+    <div class="votes">
+      <%= button_to "+", vote_topic_url(topic.id, "true"), :class => "vote_button", :disabled => !current_user || topic.user_voted?(current_user) %>
+      <%= topic.votes %><br/>
+      <%= button_to "-", vote_topic_url(topic.id, "false"), :class => "vote_button", :disabled => !current_user || topic.user_voted?(current_user) %>
+    </div>
+  </div>
+  <div class="data_container">
+    <div class="data">
+      <p><%= link_to topic.title, topic_url(topic), :class => "topic_link" %> in <%= link_to topic.category.name, category_url(topic.category) %> (<%= pluralize(topic.comments.size, "comment") %>)<br />
+      Created by <%= link_to topic.user.name, user_url(topic.user), :class => "user_link" %> at <%= l topic.created_at, :format => :long %></p>
+    </div>
+  </div>
+</div>

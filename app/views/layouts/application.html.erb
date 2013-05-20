@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agora</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+  <h1 id="title"><%= link_to "Agora", "/" %></h1>
+  <div id="right">
+    <% if current_user %>
+      Logged in as <%= link_to current_user.name, user_url(current_user), :class => "user_link" %>.
+      <%= link_to "Options", edit_user_url %>
+      <%= link_to "Logout", :destroy_session %>
+    <% else %>
+      <%= render "/sessions/new" %>
+    <% end %>
+    <br />
+    <%= form_tag :search_categories, :method => :get do %>
+      <%= text_field_tag :query, "", :placeholder => "Search for categories and topics", :id => "search_field" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+    <br />
+    <%= link_to "Categories", url_for(:controller => :categories, :action => :index) %>
+  </div>
+</header>
+
+<div id="flash">
+  <% if flash[:error] %>
+    <div id="error">
+      <%= flash[:error] %>
+      <div class="dismiss_flash"><a href="#" id="dismiss_error">Dismiss</a></div>
+    </div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div id="notice">
+      <%= flash[:notice] %>
+      <div class="dismiss_flash"><a href="#" id="dismiss_notice">Dismiss</a></div>
+    </div>
+  <% end %>
+</div>
+
+<div id="content">
+  <%= yield %>
+</div>
+
+<footer>
+  <p>Agora, 2012.</p>
+</footer>
+
+</body>
+</html>

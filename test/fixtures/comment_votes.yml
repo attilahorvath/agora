@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comment: one
+  user: admin
+  positive: true
+
+two:
+  comment: one
+  user: one
+  positive: true
+
+three:
+  comment: one
+  user: reset
+  positive: false
